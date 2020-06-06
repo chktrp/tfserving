@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  web:
+    container_name: tf_serving
+    image: tensorflow/serving
+    volumes:
+        - type: bind
+          source: .\resnet\
+          target: /models/resnet
+    ports:
+      - "8501:8501"
+    environment:
+      - MODEL_NAME=resnet
